@@ -22,6 +22,6 @@ public class PentagonalPrism extends Prism
     @Override 
     public String toString()
     {
-        return "Height = " + getHeight() + ", Side = " + getSide() + " Volume = " + calcVolume() + ", Base area = " + calcBaseArea();
+        return "Penta Prism,Height = " + getHeight() + ", Side = " + getSide() + " Volume = " + calcVolume() + ", Base area = " + calcBaseArea();
     }
 }

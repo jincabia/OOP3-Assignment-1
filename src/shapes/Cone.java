@@ -25,7 +25,7 @@ public class Cone extends Shape
     public double calcVolume()
     {
         // radius * radius = radius^2
-        return Math.PI * this.radius * this.radius * getHeight();
+        return (Math.PI * this.radius * this.radius * getHeight())/3;
     }
 
     public double calcBaseArea()
@@ -38,6 +38,6 @@ public class Cone extends Shape
     @Override
     public String toString()
     {
-        return "Height = "+ getHeight() + ", Radius = " + radius+ ", Volume = " + calcVolume() + ", Base area = " + calcBaseArea();
+        return "Cone, Height = "+ getHeight() + ", Radius = " + radius+ ", Volume = " + calcVolume() + ", Base area = " + calcBaseArea();
     }
 }

@@ -49,6 +49,8 @@ public class SortManager {
 	{
 		this.shapes = new Shape[length];
 	}
+	
+	
 
 	
 
@@ -59,10 +61,10 @@ public class SortManager {
 		setSortType((args[2]).charAt(2));
 		
 		
-		
-//		System.out.println(getFileName());
-//		System.out.println(getCompareType());
-//		System.out.println(getSortType());
+		//just for debugging 
+		System.out.println(getFileName());
+		System.out.println(getCompareType());
+		System.out.println(getSortType());
 		fillShapeList();
 		
 		
@@ -79,10 +81,14 @@ public class SortManager {
 //				System.out.println(this.fileName);
 				
 				try {
-					BufferedReader fin = new BufferedReader( new FileReader( "res/shapes1.txt" ));
+					BufferedReader fin = new BufferedReader( new FileReader( getFileName() ));
 					String line = fin.readLine();
-					System.out.println(line);
+					//System.out.println(line);
+					
+					//This reads the first line which is the length of the list.
+					//It then sizes the shapes Array
 					setShapes(Integer.parseInt(line));
+					
 //					this is creating an array with the number of elements inside the text file 
 //					using the first line of the text
 					int ShapesIndex = 0;
@@ -104,8 +110,10 @@ public class SortManager {
 //						double height = Double.parseDouble(data[1]);
 //						double radOrSide = Double.parseDouble(data[2]);
 						
-						//Idk what this means lol just copied it from the demo03
+						//Create a class
 						Class<?> paramTypes[] = new Class[2];
+						
+						//Declare the Parameters of the class
 						paramTypes[0] = Double.TYPE;
 						paramTypes[1] = Double.TYPE;
 						
@@ -127,11 +135,7 @@ public class SortManager {
 						o = ct.newInstance( argList );
 						
 						
-//			            shapes.add(Cone(o));
-			            
 						
-						//This line lets the code read through the txt so leave it lol
-						line = fin.readLine();
 						
 						if(className.substring(7).equals("Cone")) shapes[ShapesIndex] = (Cone)o;
 						else if(className.substring(7).equals("Cylinder")) shapes[ShapesIndex] = (Cylinder)o;
@@ -141,8 +145,10 @@ public class SortManager {
 						else if(className.substring(7).equals("SquarePrism")) shapes[ShapesIndex] = (SquarePrism)o;
 						else if(className.substring(7).equals("TriangularPrism")) shapes[ShapesIndex] = (TriangularPrism)o;
 						
+						//This line reads the next line of the text file
+						line = fin.readLine();
+						//Next index of the shapes array.
 						ShapesIndex++;
-////						System.out.println(className.substring(7));
 					}
 					
 					
@@ -153,7 +159,7 @@ public class SortManager {
 				}
 				catch(Exception e)
 				{
-					System.out.println("Something went run bruh" + e.getMessage());
+					System.out.println("Something went wrong, during the reflection process." + e.getMessage());
 				}
 	}
 

@@ -23,6 +23,6 @@ public class Pyramid extends Prism
     @Override 
     public String toString()
     {
-        return "Height = " + getHeight() + ", Side = " + getSide() + " Volume = " + calcVolume() + ", Base area = " + calcBaseArea();
+        return "Pyramid, Height = " + getHeight() + ", Side = " + getSide() + " Volume = " + calcVolume() + ", Base area = " + calcBaseArea();
     }
 }

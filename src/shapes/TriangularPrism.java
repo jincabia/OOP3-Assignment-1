@@ -22,6 +22,6 @@ public class TriangularPrism extends Prism
     @Override 
     public String toString()
     {
-        return "Height = " + getHeight() + ", Side = " + getSide() + " Volume = " + calcVolume() + ", Base area = " + calcBaseArea();
+        return "Tri Prism, Height = " + getHeight() + ", Side = " + getSide() + " Volume = " + calcVolume() + ", Base area = " + calcBaseArea();
     }
 }

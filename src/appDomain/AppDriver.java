@@ -2,7 +2,8 @@ package appDomain;
 
 
 import shapes.*;
-import utility.*;
+
+import utilities.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,16 +15,212 @@ public class AppDriver
 	public static void main( String[] args )
 	{
 
-		// Cylinder cy = new Cylinder(50,3);
-		// System.out.println("base area = " + cy.calcBaseArea());
-
-		// System.out.println("Volume = " + cy.calcVolume());
-
 		
-//		System.out.println("Hi");
+		//TO DO
+		// - Add Heap Sort
+		
 		try {
 
-			new SortManager(args);
+			SortManager SM = new SortManager(args);
+			Shape[] shapes = SortManager.shapes;
+			
+			//Possible Compare Types could be height h, volume v, base area a
+			char compareType = SM.getCompareType();
+			
+			//Possible Sort Types are bubble b, selection s, insertion i, merge m , quick q, or custom sort algo z
+			char sortType = SM.getSortType();
+			
+			//initializing variables 
+			long start = 0;
+			long time = 0;
+			
+			//Checking if the Compare Type is Volume v,
+			if(compareType == 'v')
+			{
+				System.out.println("This is sorted by Volume");
+				
+				//Creates a comparator to be called in sort methods
+				VolumeComparator vc = new VolumeComparator();
+				
+				
+				
+//				
+				//Checks for the Sort Type, then calls the appropriate sorting algorithm, and starts the timer
+				if(sortType =='b')
+				{
+					System.out.println("Bubble Sort");
+					start = System.currentTimeMillis();
+					sort.bubbleSort(shapes,vc);
+				}
+				else if(sortType =='s')	
+				{
+					System.out.println("Selection Sort");
+
+					start = System.currentTimeMillis();
+					sort.selectionSort(shapes,vc);
+				}
+				else if(sortType =='i')
+				{
+					System.out.println("Insertion Sort");
+
+					start = System.currentTimeMillis();
+					sort.insertionSort(shapes,vc);
+				}
+				else if(sortType =='q')
+				{
+					System.out.println("Quick Sort");
+					start = System.currentTimeMillis();
+					QuickSort.sort(shapes, vc);
+				}
+				else if(sortType =='m')
+				{
+					System.out.println("Merge Sort");
+					start = System.currentTimeMillis();
+					sort.mergeSort(shapes, vc);
+				}
+				
+
+				
+				
+				long stop = System.currentTimeMillis();
+				time = stop-start;
+				
+				
+				
+				
+			}
+			//Checking if the Compare Type is Height h,
+			else if(compareType == 'h')
+			{
+				System.out.println("This is sorted by Height");
+
+				//Checks for the Sort Type, then calls the appropriate sorting algorithm, and starts the timer
+
+				if(sortType =='b')
+				{
+					System.out.println("Bubble Sort");
+
+					start = System.currentTimeMillis();
+					sort.bubbleSort(shapes);
+				}
+				else if(sortType =='s')
+				{
+					System.out.println("Selection Sort");
+
+					start = System.currentTimeMillis();
+					sort.selectionSort(shapes);
+				}
+				else if(sortType =='i')
+				{
+					System.out.println("Insertion Sort");
+
+					start = System.currentTimeMillis();
+					sort.insertionSort(shapes);
+				}
+				
+				else if(sortType =='q')
+				{
+					System.out.println("Quick Sort");
+					start = System.currentTimeMillis();
+					QuickSort.sort(shapes);
+				}
+				else if(sortType =='m')
+				{
+					System.out.println("Merge Sort");
+					start = System.currentTimeMillis();
+					sort.mergeSort(shapes);
+				}
+				long stop = System.currentTimeMillis();
+				time = stop-start;
+				
+			}
+			else {
+				//Checking if the Compare Type is Base Area a,
+				System.out.println("This is sorted by Base Area");
+				BaseAreaComparator bac = new BaseAreaComparator(); 
+				
+				//Checks for the Sort Type, then calls the appropriate sorting algorithm, and starts the timer
+
+				if(sortType =='b')
+				{
+					System.out.println("Bubble Sort");
+
+					start = System.currentTimeMillis();
+					sort.bubbleSort(shapes,bac);
+				}
+				else if(sortType =='s')
+				{
+					System.out.println("Selection Sort");
+
+					start = System.currentTimeMillis();
+					sort.selectionSort(shapes,bac);
+				}
+				else if(sortType =='i')
+				{
+					System.out.println("Insertion Sort");
+
+					start = System.currentTimeMillis();
+					sort.insertionSort(shapes,bac);
+				}
+				
+				else if(sortType =='q')
+				{
+					System.out.println("Quick Sort");
+					start = System.currentTimeMillis();
+					QuickSort.sort(shapes, bac);
+				}
+				else if(sortType =='m')
+				{
+					System.out.println("Merge Sort");
+					start = System.currentTimeMillis();
+					sort.mergeSort(shapes, bac);
+				}
+				
+				long stop = System.currentTimeMillis();
+				time = stop-start;
+				
+
+			}
+			
+			
+			
+			System.out.println("First value in shapes");
+			System.out.println(shapes[0]);
+			
+			//Checks if the array has more than 1000 objects.
+//			if(shapes.length-1 > 1000)
+//			{
+//				for(int currentIndex = 1000; currentIndex <= shapes.length-1; currentIndex = currentIndex + 1000)
+//				{
+//					//Prints out every 1000th shape
+////					
+//					System.out.println("This value is the " + currentIndex + "th value");
+//					System.out.println(shapes[currentIndex]);
+//				}
+//			}
+			
+			System.out.println("Last value in shapes");
+			System.out.println(shapes[shapes.length-1]);
+			
+			//This time console print can be anywhere I just couldnt see it when there was 1000000 shapes.
+			System.out.println("The time is: "+time+"ms");
+			
+			
+			
+			
+			
+			
+			
+			
+
+			
+			
+			
+			
+			
+			
+			
+			
 		}
 		catch(Exception e)
 		{
@@ -31,43 +228,14 @@ public class AppDriver
 			System.out.println("Bruh");
 		}
 		
-		Shape[] fart = SortManager.shapes;
-//		ArrayList<Shape> asd = SortManager.getShapes();
-//		System.out.println(SortManager.getFileName());
-//		System.out.println("Unsorted");
-//		for(Shape s: fart)
-//		{
-//			System.out.println(s);
-//		}
 		
-		VolumeComparator vc = new VolumeComparator();
-//		Collections.sort(fart, vc);
-//		System.out.println("Sorted by Volume");
-//
-//		for(Shape s: fart)
-//		{
-//			System.out.println(s);
-//		}
+//		
 		
-//		System.out.println("This is using Sort Insertion Sort Comparable Height");
-//		System.out.println("Sort Insertion Comparator Volume");
-//		sort.insertionSort(fart,vc);
 		
-//		System.out.println("Bubble sort height comparable");
-//		System.out.println("Bubble sort volume Comparator");
-//		sort.bubbleSort(fart,vc);
-		
-//		System.out.println("Selection sort heigh comaparable");
-		System.out.println("selection sort volume comparator");
-		sort.selectionSort(fart,vc);
-		
-		for(Shape s: fart)
-		{
-			System.out.println(s);
-		}
 		
 		 
-		//Do the if statements based on the args.
+		
+		
 		
 		
 

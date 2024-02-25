@@ -22,7 +22,7 @@ public class SquarePrism extends Prism
     @Override 
     public String toString()
     {
-        return "Height = " + getHeight() + ", Side = " + getSide() + " Volume = " + calcVolume() + ", Base area = " + calcBaseArea();
+        return "Square Prism, Height = " + getHeight() + ", Side = " + getSide() + " Volume = " + calcVolume() + ", Base area = " + calcBaseArea();
     }
 
 }
